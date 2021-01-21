@@ -23,3 +23,10 @@ Data structure:
     "year": "str/max_4_char/required"
  }
 ```
+
+
+###Running tests
+To start tests — run (from the root folder): 
+`docker exec -it <api container id> bash`
+and then
+`./manage.py test`
