@@ -1,0 +1,60 @@
+
+version: '3'
+
+services:
+    nginx:
+        restart: always
+        image: nginx:latest
+        ports:
+          - "8081:80"
+        volumes:
+            - ./backend/static:/srv/www/backend/static
+            - ./backend/media:/srv/www/backend/media
+            - ./nginx/logs:/srv/www/nginx/logs
+            - ./nginx/conf/local:/etc/nginx/conf.d
+        depends_on:
+            - api
+        networks:
+            - project
+
+
+    api:
+        restart: always
+        build:
+            context: .
+            dockerfile: ./backend/Dockerfile
+        volumes:
+            - ./backend:/srv/www/backend
+            - ./backend/media:/srv/www/backend/media
+        command: "gunicorn -c gunicorn.py backend.wsgi"
+        env_file:
+            - ./.env
+        depends_on:
+            - db
+        networks:
+            - project
+
+    db:
+        container_name: 'codex-trial-db'
+        restart: always
+        image: postgres:latest
+        ports:
+            - 5472:5432
+        environment:
+            - POSTGRES_USER=${DB_USER}
+            - POSTGRES_PASSWORD=${DB_PASSWORD}
+            - POSTGRES_DB=${DB_NAME}
+            - PGDATA=/var/lib/postgresql/data
+        volumes:
+            - ./backup:/backup
+            - pgdata:/var/lib/postgresql/data
+        networks:
+            - project
+
+volumes:
+    pgdata:
+        driver: local
+
+networks:
+  project:
+    driver: bridge
