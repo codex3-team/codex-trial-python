@@ -8,7 +8,13 @@ class Car(models.Model):
     make = models.CharField(max_length=128)
     model = models.CharField(max_length=128)
     year = models.IntegerField()
-    idx_id = models.BigIntegerField(null=False, blank=False, editable=False)
+    idx_id = models.BigIntegerField(null=False, blank=False, editable=False, unique=True)
+
+    class Meta:
+        indexes = [
+            models.Index(fields=['idx_id']),
+        ]
 
     def __str__(self):
         return f"car {self.make}/{self.model}/{self.year}"
+
