@@ -17,5 +17,5 @@ from django.conf.urls import url
 from cdx.cars import views as car_views
 
 urlpatterns = [
-    url('cars', car_views.CarView.as_view())
+    url('cars', car_views.CarView.as_view()),
 ]
