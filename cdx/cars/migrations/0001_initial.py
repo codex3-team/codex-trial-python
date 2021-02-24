@@ -19,7 +19,6 @@ class Migration(migrations.Migration):
                 ('make', models.CharField(max_length=128)),
                 ('model', models.CharField(max_length=128)),
                 ('year', models.IntegerField()),
-                ('idx_id', models.BigIntegerField(editable=False)),
             ],
         ),
     ]
