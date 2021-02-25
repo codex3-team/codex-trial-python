@@ -1,17 +1,24 @@
-# Trial task for python developer
+# Application 
 
-In this trial task, you are asked to create an application that provides a simple create-and-retrieve interface for a cars inventory. The application is required to be designed using any python web framework of your choice (e.g. Flask, Django, etc.). The application must feature an endpoint that represents a paged sorted list of cars (total number of cars in the inventory might exceed 10000 items). Besides that, the application must provide an endpoint that allows to add a new car into the inventory.
+## This is an app with modern stack of technologies to represent simple CRUD operations on backend and show results in browser
 
-Please use the data dump provided within the repository to have a reference of the application's domain model.
+To start application do:
 
-Your submission must contain the following artifacts besides the application code:
+> docker-compose up
 
-* A test suite
-* A Dockerfile descriptor
-* docker-compose.yml descriptor that would allow to run the application locally
+UI will be accessed here http://localhost:3000
 
-Please consider using PostgreSQL as the database engine. You are free to alter database schema as you need - adding indices, triggers, functions, etc.
+Tests (here just unit tests ) start automatically on a build process.
 
-# Submission delivery
+# Key Faeture:
+## Backend:
+>  Flask for api
+>  Pydantic for data validation
+>  Pewee as database orm
 
-Please fork this repository and create a pull request once your submission is ready.
+## Frontend:
+>  Nextjs as framework 
+>  Material Design for UI
+
+## Tips:
+> The ordering is going by Year, to find add new model easily please create it with current year

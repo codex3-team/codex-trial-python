@@ -1,0 +1,45 @@
+version: '3.7'
+
+services:
+  db:
+    image: postgres:latest
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=hc
+    volumes:
+      - ./docker/cars.sql:/docker-entrypoint-initdb.d/cars.sql
+    expose:
+       - 5432
+    ports:
+       - 5432:5432      
+  backend:
+        environment:
+          - DATABASE=db
+        restart: always
+        build:
+            context: ./
+            dockerfile: ./docker/backend
+        expose:
+          - 8000
+        ports:
+          - 8008:8000      
+        command: "gunicorn -w 3 -b 0.0.0.0:8000 app:app"
+        depends_on:
+            - db    
+  frontend:
+        environment:
+          - API_URL=backend:8000
+        restart: always
+        build:
+            context: ./
+            dockerfile: ./docker/frontend
+        expose:
+          - 3000
+        ports:
+          - 3000:3000      
+        command: "pm2-runtime start npm --name front -- start"
+        depends_on:
+            - backend    
+
+            
