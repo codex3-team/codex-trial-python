@@ -1,0 +1,55 @@
+
+version: '3'
+
+services:
+    api:
+        restart: always
+        build:
+            context: .
+            dockerfile: ./cdx/Dockerfile
+        volumes:
+            - ./cdx:/srv/www/cdx
+        command: "gunicorn -c gunicorn.py wsgi"
+        env_file:
+            - ./.env
+        depends_on:
+            - db
+        networks:
+            - test
+
+    db:
+        container_name: 'test-db'
+        restart: always
+        image: postgres:latest
+        ports:
+            - 5472:5432
+        environment:
+            - POSTGRES_USER=${DB_USER}
+            - POSTGRES_PASSWORD=${DB_PASSWORD}
+            - POSTGRES_DB=${DB_NAME}
+            - PGDATA=/var/lib/postgresql/data
+        volumes:
+            - pgdata:/var/lib/postgresql/data
+        networks:
+            - test
+
+    nginx:
+        restart: always
+        image: nginx:latest
+        ports:
+          - "8081:80"
+        volumes:
+            - ./nginx/logs:/srv/www/nginx/logs
+            - ./nginx/conf/local:/etc/nginx/conf.d
+        depends_on:
+            - api
+        networks:
+            - test
+
+volumes:
+    pgdata:
+        driver: local
+
+networks:
+  test:
+    driver: bridge

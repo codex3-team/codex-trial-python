@@ -1,16 +1,6 @@
-create table cars
-(
-    id      uuid         not null,
-    make    varchar(128) not null,
-    model   varchar(128) not null,
-    year    varchar(4)   not null
-);
+\c cdx
 
-alter table cars
-    add constraint cars_pk
-        primary key (id);
-
-INSERT INTO cars (id, make, model, year)
+INSERT INTO cars_car (id, make, model, year)
 VALUES ('71107c9f-317b-4b44-9a0f-b8014d967658', 'DS', '3', '2016'),
        ('5419844d-0024-4a60-9222-5245432f52e1', 'DS', '3', '2017'),
        ('c909661a-6386-4814-907b-a9666d01332c', 'DS', '3', '2018'),

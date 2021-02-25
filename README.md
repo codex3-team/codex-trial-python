@@ -1,17 +1,1 @@
-# Trial task for python developer
-
-In this trial task, you are asked to create an application that provides a simple create-and-retrieve interface for a cars inventory. The application is required to be designed using any python web framework of your choice (e.g. Flask, Django, etc.). The application must feature an endpoint that represents a paged sorted list of cars (total number of cars in the inventory might exceed 10000 items). Besides that, the application must provide an endpoint that allows to add a new car into the inventory.
-
-Please use the data dump provided within the repository to have a reference of the application's domain model.
-
-Your submission must contain the following artifacts besides the application code:
-
-* A test suite
-* A Dockerfile descriptor
-* docker-compose.yml descriptor that would allow to run the application locally
-
-Please consider using PostgreSQL as the database engine. You are free to alter database schema as you need - adding indices, triggers, functions, etc.
-
-# Submission delivery
-
-Please fork this repository and create a pull request once your submission is ready.
+'*# ***** **s* *** **tho* *ev***per**I* *h** *r*** **s** **u *** *s*** ** cr**** an *p**i****o* t*** *r**i**s a si**le cre*te-and*ret****e i*te**ace *** * ***s i**en**r*. *he ap**ic*tion ** r**ui*** ** be ****gn** *s*ng *ny ****** **b *ramewo*k of yo** *h*i*e ***g* F*a*k, *j***o* etc.)* Th* a****c***o* mu** f****r* a* e**po*nt **** rep**s**ts * *a*** s**te* **** ** **rs *t*t** num*** of **** ** t*e i**e**o** **g** *x*eed ***** *t**s). ***i**s t***, *h* *p******i** *ust p**v*** a* *n*p***t tha* a***w* ** *** * *** **r *n** t*e **ve*t***.\n*P*ease **e *h* **t* d*** ***vid** ****in t*e r****i**** t* **** a r*fer*nc* of *** *p***cati***s *****n mod**.\n***** **b******n **** *o**a*n **e **l*owi** **t*fac** *e***** *h* *p********* c****\n\n* * **s* *ui*e** A **c******* ***cri****\n* d**k**-*******.y** d***r**t** *h** w***d **lo* *o r** the ap***cat**n *oc***y\n\n***as* c*n**d*r **in* Pos**re*QL a* t*e dat***** e***n*. *ou *** *r** to **ter da*abas* schema a* you *e** * a**in* *n***e** t*i*g***, **nction*, et*.**# S*******o* deli****\n****a** for* t*i* rep****o** an* cr*at* * *u*l r**u*** on** y*** **b*issi*n i* *e***.* '
