@@ -1,4 +1,4 @@
-from flask import Flask, jsonify, request
+from flask import Flask
 from cars_api import cars_bp
 
 app = Flask(__name__)
@@ -10,4 +10,3 @@ app.register_blueprint(cars_bp, url_prefix=API_PREFIX.format(app_route='cars'))
 
 if __name__ == '__main__':
     app.run(host="0.0.0.0", port=8080)
-

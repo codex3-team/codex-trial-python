@@ -1,7 +1,5 @@
 from pydantic import BaseModel, ValidationError, validator, constr
-from typing import Any, List, Optional
-import peewee
-from utils.errors import Errors
+import utils.errors as errors
 
 class CarBase(BaseModel):
     make: constr(max_length=128)
@@ -21,14 +19,14 @@ class CarSerializer(CarBase):
     def year_is_digit(cls, v):
         cls.check_size(v, 4)
         v.isdigit()
-        assert v.isdigit(), Errors.year_format
+        assert v.isdigit(), errors.year_format
 
     @classmethod
     def check_size(cls, v, size):
         if not v:
-            raise ValueError(Errors.empty)
+            raise ValueError(errors.empty)
         if len(v) > size:
-            raise ValueError(Errors.length)
+            raise ValueError(errors.length)
 
 
     
