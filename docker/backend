@@ -1,0 +1,10 @@
+FROM python:3.9
+
+ENV DATABASE=db
+
+COPY ./services/restapi /srv/www/restapi
+WORKDIR /srv/www/restapi
+
+RUN pip3 install -r requirements.txt
+
+RUN pytest tests.py
